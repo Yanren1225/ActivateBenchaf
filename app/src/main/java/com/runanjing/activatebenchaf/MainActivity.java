@@ -9,6 +9,7 @@ import android.view.*;
 import android.widget.*;
 import java.util.*;
 import java.io.*;
+import java.lang.reflect.*;
 
 public class MainActivity extends Activity 
 {
@@ -18,9 +19,9 @@ public class MainActivity extends Activity
 	private Button root;
 	private Button shell;
 
-	private String STR_ADB="adb shell sh /data/data/com.runanjing.activatebenchaf/Run.sh";
-	private String STR_HEIYU="sh /data/data/com.runanjing.activatebenchaf/Run.sh";
-	private String STR_SHELL="sh /data/data/com.runanjing.activatebenchaf/Run.sh";
+	private String STR_ADB="adb shell sh /data/data/com.runanjing.activatebenchaf/files/Run.sh";
+	private String STR_HEIYU="sh /data/data/com.runanjing.activatebenchaf/files/Run.sh";
+	private String STR_SHELL="sh /data/data/com.runanjing.activatebenchaf/files/Run.sh";
 	private String kf_packname="com.af.benchaf";
 
 	private CheckBox if_open;
@@ -31,6 +32,7 @@ public class MainActivity extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		forceShowOverflowMenu();
 		isBenchafInstall(isApplicationAvilible(this, "com.af.benchaf"));
 		adb = (Button)findViewById(R.id.adb);
 		heiyu = (Button)findViewById(R.id.heiyu);
@@ -72,7 +74,7 @@ public class MainActivity extends Activity
 				@Override
 				public void onClick(View p1)
 				{
-					String root_ok=Shell.execRootCmd("sh /data/data/com.runanjing.activatebenchaf/Run.sh\n");
+					String root_ok=Shell.execRootCmd("sh /data/data/com.runanjing.activatebenchaf/files/Run.sh\n");
 					if (root_ok.equals("") == false)
 					{
 						SharedPreferences kf_share=getSharedPreferences("kf", 0);
@@ -113,6 +115,55 @@ public class MainActivity extends Activity
 			});
     }
 
+	private void forceShowOverflowMenu() {
+		try {
+			ViewConfiguration config = ViewConfiguration.get(this);
+			Field menuKeyField = ViewConfiguration.class
+				.getDeclaredField("sHasPermanentMenuKey");
+			if (menuKeyField != null) {
+				menuKeyField.setAccessible(true);
+				menuKeyField.setBoolean(config, false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.actionbar_menu, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+			case R.id.about:
+				AlertDialog.Builder about_dialog=new AlertDialog.Builder(this)
+					.setTitle("关于")
+					.setMessage("本应用可以用来激活快否\n开发者:酷安@汝南京\n完全开源，请放心使用")
+					.setPositiveButton("确定", null)
+					.setNegativeButton("开源地址", new
+					DialogInterface.OnClickListener(){
+						@Override
+						public void onClick(DialogInterface p1, int p2)
+						{
+							Intent github=new Intent("android.intent.action.VIEW");
+							github.setData(Uri.parse("https://github.com/nihaocun/ActivateBenchaf"));
+							startActivity(github);
+						}
+					});
+				about_dialog.show();
+				break;
+				
+			default:
+				break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	
 	private boolean checkPackInfo(String packname)
 	{
         PackageInfo packageInfo = null;

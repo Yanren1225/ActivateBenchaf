@@ -17,7 +17,7 @@
 		android:layout_width="match_parent"
 		style="?android:attr/buttonBarButtonStyle"
 		android:layout_height="wrap_content"
-		android:text="ADB激活(需要电脑操作):adb shell sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:text="ADB激活(需要电脑操作):adb shell sh /data/data/com.runanjing.activatebenchaf/files/Run.sh\n点击直接复制"
 		android:layout_below="@id/mainTextView1"
 		android:id="@+id/adb"
 		android:layout_centerHorizontal="true"/>
@@ -26,7 +26,7 @@
 		android:layout_width="match_parent"
 		style="?android:attr/buttonBarButtonStyle"
 		android:layout_height="wrap_content"
-		android:text="执行指令激活(需要在黑阈中操作):sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:text="执行指令激活(需要在黑阈中操作):sh /data/data/com.runanjing.activatebenchaf/files/Run.sh\n点击直接复制"
 		android:layout_below="@id/adb"
 		android:layout_centerHorizontal="true"
 		android:id="@+id/heiyu"/>
@@ -72,7 +72,7 @@
 		android:layout_width="match_parent"
 		style="?android:attr/buttonBarButtonStyle"
 		android:layout_height="wrap_content"
-		android:text="高级骚操作(需要在终端执行且需要root):sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:text="高级骚操作(需要在终端执行且需要root):sh /data/data/com.runanjing.activatebenchaf/files/Run.sh\n点击直接复制"
 		android:layout_below="@id/mainTextView3"
 		android:layout_centerHorizontal="true"
 		android:id="@+id/shell"/>
