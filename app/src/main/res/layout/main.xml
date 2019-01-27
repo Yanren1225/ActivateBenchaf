@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:padding="8dp">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="免root激活"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/mainTextView1"/>
+
+	<Button
+		android:layout_width="match_parent"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:text="ADB激活(需要电脑操作):adb shell sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:layout_below="@id/mainTextView1"
+		android:id="@+id/adb"
+		android:layout_centerHorizontal="true"/>
+
+	<Button
+		android:layout_width="match_parent"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:text="执行指令激活(需要在黑阈中操作):sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:layout_below="@id/adb"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/heiyu"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="root方式激活"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_below="@id/heiyu"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/mainTextView2"
+		android:layout_marginTop="8dp"/>
+
+	<CheckBox
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/mainTextView2"
+		android:id="@+id/if_kf_open"
+		android:layout_centerHorizontal="true"
+		android:text="激活成功后启动快否"/>
+
+	<Button
+		android:layout_width="match_parent"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:text="点击直接执行\需要root权限"
+		android:layout_below="@id/if_kf_open"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/root"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="高级激活操作"
+		android:textAppearance="?android:attr/textAppearanceMedium"
+		android:layout_below="@id/root"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/mainTextView3"
+		android:layout_marginTop="8dp"/>
+
+	<Button
+		android:layout_width="match_parent"
+		style="?android:attr/buttonBarButtonStyle"
+		android:layout_height="wrap_content"
+		android:text="高级骚操作(需要在终端执行且需要root):sh /data/data/com.runanjing.activatebenchaf/Run.sh\n点击直接复制"
+		android:layout_below="@id/mainTextView3"
+		android:layout_centerHorizontal="true"
+		android:id="@+id/shell"/>
+
+</RelativeLayout>
+
