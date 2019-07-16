@@ -8,10 +8,10 @@ android {
         applicationId "cn.endureblaze.activatebenchaf"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 2
-        versionName "1.1"
+        versionCode 3
+        versionName "1.2"
     }
-    buildTypes {
+    buildTypes {k
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
